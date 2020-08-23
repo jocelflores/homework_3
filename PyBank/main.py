@@ -41,9 +41,10 @@ with open(csvpath,'r') as csvfile:
         #calculate average
         average_profit = (total_changes/month_count)
 
+        # finding greatest increase and greatest decrease in the list
         greatest_increase = max(monthly_net_list)
         greatest_decrease = min(monthly_net_list)
-
+        # match the dates to the 
         greatest_increase_date = date[(monthly_net_list).index(greatest_increase)]
         greatest_decrease_date = date[(monthly_net_list).index(greatest_decrease)]
     
@@ -54,3 +55,18 @@ f"Total: ${total_net_profit}\n",
 f"Average Change: ${average_profit}\n",
 f"Greatest Increase in Profits: {greatest_increase_date, greatest_increase}\n",
 f"Greatest Decrease in Profits: {greatest_decrease_date, greatest_decrease}\n")
+
+output = (
+f"Financial Analysis\n",
+f"________________________________",
+f" Total Months: {month_count}\n" ,
+f"Total: ${total_net_profit}\n",
+f"Average Change: ${average_profit}\n",
+f"Greatest Increase in Profits: {greatest_increase_date, greatest_increase}\n",
+f"Greatest Decrease in Profits: {greatest_decrease_date, greatest_decrease}\n")
+
+# Print output to text file, it prints in one line instead of several
+
+textfile_path = os.path.join('Analysis', 'print_analysis.txt')
+with open(textfile_path, 'w') as txt_file:
+    txt_file.write(str(output))
